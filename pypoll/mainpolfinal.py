@@ -7,10 +7,8 @@ with open(csvpath, newline='') as csvfile:
 
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    print(csvreader)
-
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    
     total_votes=0
     canidates = []
     khan_total = 0
@@ -32,12 +30,7 @@ with open(csvpath, newline='') as csvfile:
         if row [2] == "O'Tooley":
             otooley_total = otooley_total+1
 
-    print ("khan",khan_total)
-    print("Total Votes:", total_votes)
-    print("names",canidates)
-    print("li",li_total)
-    print("correy",correy_total)
-    print("ottotot",otooley_total)
+    
     #Calculate the total vote
     total_votes =  khan_total+correy_total+li_total+otooley_total
     print("Total Votes,",total_votes)
@@ -73,7 +66,7 @@ with open ("Voter_Results.txt","w") as voter_file:
     voter_file.write("Li:{0:.3f}% ({1})\n".format(li_percentage,li_total))
     voter_file.write("Correy:{0:.3f}% ({1})\n".format(corey_percentage,correy_total))
     voter_file.write("O'tooley:{0:.3f}% ({1})\n".format(otooley_percentage,otooley_total))
-
+    voter_file.write("Highest vote total",winning_canidates)
 
 
 

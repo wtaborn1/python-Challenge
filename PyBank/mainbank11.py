@@ -18,9 +18,9 @@ with open ("budget_data.csv") as budget_data:
   #  print("profit_loss", profit_loss)
    # print("date:", date)
 num_months = len (date)
-print (" months", num_months)
+print ("total months {0}".format(num_months))
 total_dollars = sum (profit_loss)
-print ("total: $" + str(total_dollars))
+print ("Total: $" + str(total_dollars))
 #average change in profit and losses
 differce_sum = 0
 prev_amount = profit_loss [0]
@@ -30,7 +30,7 @@ for dollar_amount in profit_loss:
     prev_amount = dollar_amount
 average_change = differce_sum/(num_months-1)
 
-print("average",average_change)
+print("Average Change:${0}".format (average_change))
 
 # Trying to capture the greatest amount difference
 most_profitable = 0
@@ -41,7 +41,7 @@ for dollar_amount in profit_loss:
     if the_difference >= most_profitable:
         most_profitable = the_difference
     prev_amount = dollar_amount
-print("greatest amont", most_profitable)
+print("Greatest increase in profits:${0} ".format(most_profitable))
 # Capturing the least amount
 least_profitable = 1000000
 prev_amount = profit_loss[0]
@@ -50,9 +50,15 @@ for dollar_amount in profit_loss:
     if the_difference <= least_profitable:
         least_profitable = the_difference
     prev_amount = dollar_amount
-print("least amount", least_profitable )
+print("Greatest decrease in profits:${0}".format(least_profitable))
 
-
+#Writing files and outputs
+with open ("financial_output.txt", "w") as financial_ouput:
+    financial_ouput.write("total months {0}\n".format(num_months))
+    financial_ouput.write("Total:${0}\n".format(total_dollars))
+    financial_ouput.write("Average Change:${0}\n".format (average_change))
+    financial_ouput.write("Greatest increase in profits:${0}\n".format(most_profitable))
+    financial_ouput.write("Greatest decrease in profits:${0}\n".format(least_profitable))
 
 
 
